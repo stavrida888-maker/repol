@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="задание5.cpp">
+    <ClCompile Include="задание6.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
