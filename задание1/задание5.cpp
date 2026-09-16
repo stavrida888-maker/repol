@@ -1,23 +1,25 @@
-#include <iostream>
-#include <cmath>
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+#include <math.h>
 
 int main() {
-    int h = 2;
-    int m = 43;
+    int h, m;
 
-    // Угол часовой и минутной стрелки от 12 часов
-    double angle_h = (h % 12) * 30.0 + m * 0.5;
-    double angle_m = m * 6.0;
+    printf("Vvedite chasy i minyty: ");
+    scanf("%d %d", &h, &m);
 
-    // Абсолютная разница между ними
-    double diff = fabs(angle_h - angle_m);
-
-    // Выбираем наименьший угол (не больше 180 градусов)
-    if (diff > 180.0) {
+    double hour_angle = 30.0 * (h % 12) + 0.5 * m;
+    
+    double minute_angle = 6.0 * m;
+    
+    double diff = fabs(hour_angle - minute_angle);
+    if (diff > 180.0)
+    {
         diff = 360.0 - diff;
     }
 
-    std::cout << "Min angle: " << diff << std::endl; // Выведет 176.5
+    printf("%.1f\n", diff);
 
     return 0;
 }
+НУЖНО ИСПОЛЬЗОВАТЬ ТЕРНАРНЫЙ ОПЕРАТОР
