@@ -1,39 +1,35 @@
-#include <iostream>
+int main()
+{
+    int rub, kop;
 
-int main() {
-    int r = 76;
-    int k = 99;
+    printf("Vvedite rubli i kopejki: ");
+    scanf("%d %d", &rub, &kop);
 
-    int max_money = r * 100 + k;
-    int best_steps = 0;
+    int money = rub * 100 + kop;
+    int max_money = money;
+    int best_passes = 0;
+    int passes = 0;
 
-    int cur_r = r;
-    int cur_k = k;
-    int step = 0;
+    while (money >= 29 && passes < 1000)
+    {
+        passes += 1;
 
-    while (true) {
-        int total_kop = cur_r * 100 + cur_k;
-        if (total_kop < 29) break; // Нельзя отдать 29 копеек
+        money = money - 29;
 
-        total_kop -= 29;
-        cur_r = total_kop / 100;
-        cur_k = total_kop % 100;
+        int r = money / 100;
+        int k = money % 100;
 
-        // Меняем местами рубли и копейки
-        int temp = cur_r;
-        cur_r = cur_k;
-        cur_k = temp;
-
-        step++;
-
-        int current_val = cur_r * 100 + cur_k;
-        if (current_val > max_money) {
-            max_money = current_val;
-            best_steps = step;
+        money = k * 100 + r;
+        if (money > max_money)
+        {
+            max_money = money;
+            best_passes = passes;
         }
     }
 
-    std::cout << "Optimal steps: " << best_steps << std::endl; // Для 76r 99k выведет 81
+    printf("max summa: %d r. %d k.\n", max_money / 100, max_money % 100);
+    printf("optimalnoe chislo prohodov : % d\n", best_passes);
 
     return 0;
 }
+нужно использовать do while
